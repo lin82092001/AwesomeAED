@@ -1,14 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
-    StyleSheet,
+    StyleSheet, View,
 } from 'react-native'
 import { Videos } from './video/Videos'
 import { Classify } from './tf/Classify'
-import {
-    Container,
-    Tab,
-    Tabs
-} from 'native-base'
+import { TabBar, Icon } from '@ant-design/react-native'
 
 const styles = StyleSheet.create({
     tabs: {
@@ -17,23 +13,35 @@ const styles = StyleSheet.create({
 });
 
 export const Main = () => {
+    const [selectedTab, setSelectedTab] = useState("Video")
 
     return (
-        <Container>
-            {/* <Header></Header>
-            <Content>
-                <Text>Native base</Text>
-            </Content>
-            <Footer> */}
-                <Tabs tabBarPosition="bottom">
-                    <Tab heading="Video" >
-                        <Videos />
-                    </Tab>
-                    <Tab heading="Classify">
-                        <Classify />
-                    </Tab>
-                </Tabs>
-            {/* </Footer> */}
-        </Container>
+        <>
+            <TabBar
+                unselectedTintColor="#949494"
+                tintColor="#33A3F4"
+                barTintColor="white"
+                hidden={false}
+            >
+                <TabBar.Item
+                    title="Video"
+                    key="Video"
+                    selected={selectedTab === "Video"}
+                    onPress={() => { setSelectedTab("Video") }}
+                    icon={<Icon name="user" />}
+                >
+                    <Videos />
+                </TabBar.Item>
+                <TabBar.Item
+                    title="Classify"
+                    key="Classify"
+                    selected={selectedTab === "Classify"}
+                    onPress={() => { setSelectedTab("Classify") }}
+                    icon={<Icon name="home" />}
+                >
+                    <Classify />
+                </TabBar.Item>
+            </TabBar>
+        </>
     )
 }

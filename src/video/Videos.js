@@ -5,15 +5,13 @@ import {
     ScrollView,
     View,
     StatusBar,
+    Text
 } from 'react-native'
 import {
     Colors,
+    Header
 } from 'react-native/Libraries/NewAppScreen'
 import Video from 'react-native-video'
-import {
-    Text,
-    Header,
-} from 'native-base'
 
 const styles = StyleSheet.create({
     backgroundVideo: {
